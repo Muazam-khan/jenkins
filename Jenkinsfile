@@ -16,7 +16,7 @@ pipeline {  // pipeline is also a keyword, it means its a declarative approach
                 ENV_URL = "task.google.com" // task or stage level var. nd this will hv higher priority than global
             }
             steps {
-                sh "echo step1"
+                sh "echo Name of the variable is ${ENV_URL}"
                 sh "echo step2"
                 sh "echo step3"
 
