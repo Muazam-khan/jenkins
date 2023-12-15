@@ -3,9 +3,7 @@ pipeline {  // pipeline is also a keyword, it means its a declarative approach
     stages{  // is als a directive or keyword
         stage('Name of the stage - 1'){
             steps {
-                sh "echo step1" //sh in the beginning refers it as a shell based cmd
-                sh "echo step2"
-                sh "echo step3"
+                echo hello
 
             }
         }
