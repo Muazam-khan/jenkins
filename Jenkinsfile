@@ -13,7 +13,7 @@ pipeline {  // pipeline is also a keyword, it means its a declarative approach
         }
         stage('Name of the stage - 2'){
             environment {
-                ENV_URL = "task.google.com"
+                ENV_URL = "task.google.com" // task or stage level var. nd this will hv higher priority than global
             }
             steps {
                 sh "echo step1"
