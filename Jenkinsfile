@@ -1,9 +1,14 @@
+// Reference : https://www.jenkins.io/doc/book/pipeline/syntax
 pipeline {  // pipeline is also a keyword, it means its a declarative approach
     agent any // is a directive or keyword
+    environment{
+        ENV_URL = "pipeline.google.com"
+    }
     stages{  // is als a directive or keyword
         stage('Name of the stage - 1'){
             steps {
                 sh 'echo how are you doing?'
+                sh "echo Name of the variable is ${ENV_URL}"
             }
         }
         stage('Name of the stage - 2'){
