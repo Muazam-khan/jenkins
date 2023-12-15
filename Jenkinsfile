@@ -9,6 +9,7 @@ pipeline {  // pipeline is also a keyword, it means its a declarative approach
             steps {
                 sh 'echo how are you doing?'
                 sh "echo Name of the variable is ${ENV_URL}"
+                sh "env"
             }
         }
         stage('Name of the stage - 2'){
