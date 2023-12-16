@@ -13,8 +13,8 @@ pipeline {  // pipeline is also a keyword, it means its a declarative approach
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     }
       options { buildDiscarder(logRotator(numToKeepStr: '10'))
-            timeout(time: 1, unit: 'MINUTES') }  //discard older than 10 logs
-     triggers { pollSCM('*/59 * * * *') // check ievery min if change in code and build
+            timeout(time: 59, unit: 'MINUTES') }  //discard older than 10 logs
+     triggers { pollSCM('*/1 * * * *') // check ievery min if change in code and build
 }
 tools {
         maven 'maven-390' // to install maven software with help of tools on jenkins
@@ -28,6 +28,25 @@ tools {
                 sh "env"
                 sh "sleep 50"
             }
+        }
+        stage('Demo on Parallel Stages'){
+            parallel {
+                stage('Branch A') {
+                    agent {
+                        label "for-branch-a"
+                    }
+                    steps {
+                        echo "On Branch A"
+                    }
+                }
+                stage('Branch B') {
+                    agent {
+                        label "for-branch-b"
+                    }
+                    steps {
+                        echo "On Branch B"
+                    }
+                }
         }
           stage('Name of the stage- 2'){
             environment {
