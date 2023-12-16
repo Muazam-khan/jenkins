@@ -17,7 +17,7 @@ pipeline {  // pipeline is also a keyword, it means its a declarative approach
      triggers { pollSCM('*/59 * * * *') // check ievery min if change in code and build
 }
 tools {
-        maven 'apache-maven-3.0.1' 
+        maven 'maven-390' // to install maven software with help of tools on jenkins
     }
     stages{  // is als a directive or keyword
             stage('Name of the stage - 1'){
