@@ -13,7 +13,7 @@ pipeline {  // pipeline is also a keyword, it means its a declarative approach
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     }
      triggers {
-        pollSCM('*/20 * * * *')
+        pollSCM('*/1 * * * *')
     }
     stages{  // is als a directive or keyword
         stage('Name of the stage - 1'){
