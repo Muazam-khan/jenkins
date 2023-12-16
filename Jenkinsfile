@@ -8,18 +8,19 @@ pipeline {  // pipeline is also a keyword, it means its a declarative approach
     parameters {
         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
         text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
-        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
-        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
-        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
-    }
-      options { buildDiscarder(logRotator(numToKeepStr: '10'))
-            timeout(time: 59, unit: 'MINUTES') }  //discard older than 10 logs
-     triggers { pollSCM('*/1 * * * *') // check ievery min if change in code and build
-}
+        
+      }
+      options { 
+                buildDiscarder(logRotator(numToKeepStr: '10'))
+                timeout(time: 59, unit: 'MINUTES')
+     }  //discard older than 10 logs
+     triggers { 
+               pollSCM('*/1 * * * *') // check ievery min if change in code and build
+       }
 tools {
         maven 'maven-390' // to install maven software with help of tools on jenkins
     }
-    stages{  // is als a directive or keyword
+    stages{  // is als0 a directive or keyword
             stage('Name of the stage - 1'){
             steps {
                 sh "mvn --version"
@@ -31,22 +32,26 @@ tools {
         }
         stage('Demo on Parallel Stages'){
             parallel {
-                stage('Branch A') {
-                    agent {
-                        label "for-branch-a"
-                    }
+                stage('Download-1') {
                     steps {
-                        echo "On Branch A"
+                        sh "echo Download in Progress"
+                        sh "sleep 120"
                     }
                 }
-                stage('Branch B') {
-                    agent {
-                        label "for-branch-b"
-                    }
+                stage('Download-2') {
                     steps {
-                        echo "On Branch B"
+                        sh "echo Download in Progress"
+                        sh "sleep 120"
                     }
                 }
+                stage('Download-3') {
+                    steps {
+                        sh "echo Download in Progress"
+                        sh "sleep 120"
+                    }
+                }
+            }
+
         }
           stage('Name of the stage- 2'){
             environment {
