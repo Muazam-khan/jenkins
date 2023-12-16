@@ -13,7 +13,7 @@ pipeline {  // pipeline is also a keyword, it means its a declarative approach
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     }
     options { buildDiscarder(logRotator(numToKeepStr: '10'))
-    timeout(time: 1, unit: 'MINUTES') } } //discard older than 10 logs
+    timeout(time: 1, unit: 'MINUTES') }  //discard older than 10 logs
      triggers { pollSCM('*/1 * * * *') // check ievery min if change in code and build
     }
     stages{  // is als a directive or keyword
