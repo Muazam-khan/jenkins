@@ -12,6 +12,9 @@ pipeline {  // pipeline is also a keyword, it means its a declarative approach
        // choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
        // password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     }
+    triggers {
+        cron('*/1 * * * *') // cron works at minute level, not second level
+    }
     stages{  // is als a directive or keyword
         stage('Name of the stage - 1'){
             steps {
