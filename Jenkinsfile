@@ -33,19 +33,19 @@
                 stage('Download-1') {
                     steps {
                         sh "echo Download in Progress"
-                        sh "sleep 120"
+                        sh "sleep 30"
                     }
                 }
                 stage('Download-2') {
                     steps {
                         sh "echo Download in Progress"
-                        sh "sleep 120"
+                        sh "sleep 30"
                     }
                 }
                 stage('Download-3') {
                     steps {
                         sh "echo Download in Progress"
-                        sh "sleep 120"
+                        sh "sleep 30"
                     }
                 }
             }
