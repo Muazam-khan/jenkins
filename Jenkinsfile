@@ -12,12 +12,12 @@ pipeline {  // pipeline is also a keyword, it means its a declarative approach
         choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     }
-    options { buildDiscarder(logRotator(numToKeepStr: '10'))
-    timeout(time: 1, unit: 'MINUTES') }  //discard older than 10 logs
+      options { buildDiscarder(logRotator(numToKeepStr: '10'))
+            timeout(time: 1, unit: 'MINUTES') }  //discard older than 10 logs
      triggers { pollSCM('*/1 * * * *') // check ievery min if change in code and build
-    }
+}
     stages{  // is als a directive or keyword
-        stage('Name of the stage - 1'){
+            stage('Name of the stage - 1'){
             steps {
                 sh 'echo how are you doing Mr?'
                 sh "echo Name of the variable is ${ENV_URL}"
@@ -25,7 +25,7 @@ pipeline {  // pipeline is also a keyword, it means its a declarative approach
                 sh "sleep 150"
             }
         }
-        stage('Name of the stage- 2'){
+          stage('Name of the stage- 2'){
             environment {
                 ENV_URL = "stage.google.com" // task or stage level var. nd this will hv higher precedence than global or pipeline var
             }
