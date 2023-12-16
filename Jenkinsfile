@@ -22,6 +22,7 @@ tools {
     stages{  // is als a directive or keyword
             stage('Name of the stage - 1'){
             steps {
+                sh "mvn --version"
                 sh 'echo how are you doing Mr?'
                 sh "echo Name of the variable is ${ENV_URL}"
                 sh "env"
