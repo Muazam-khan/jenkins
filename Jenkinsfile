@@ -18,7 +18,7 @@ pipeline {  // pipeline is also a keyword, it means its a declarative approach
     stages{  // is als a directive or keyword
         stage('Name of the stage - 1'){
             steps {
-                sh 'echo how are you doing?'
+                sh 'echo how are you doing Mr?'
                 sh "echo Name of the variable is ${ENV_URL}"
                 sh "env"
             }
