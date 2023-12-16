@@ -12,8 +12,8 @@ pipeline {  // pipeline is also a keyword, it means its a declarative approach
         choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     }
-     triggers {
-        pollSCM('*/1 * * * *')
+    options { buildDiscarder(logRotator(numToKeepStr: '3')) } //discard older than 3 days logs
+     triggers { pollSCM('*/1 * * * *') // check ievery min if change in code and build
     }
     stages{  // is als a directive or keyword
         stage('Name of the stage - 1'){
