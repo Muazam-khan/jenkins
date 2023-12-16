@@ -1,25 +1,24 @@
 // Reference : https://www.jenkins.io/doc/book/pipeline/syntax
-pipeline {  // pipeline is also a keyword, it means its a declarative approach
-    agent any // is a directive or keyword
-    environment{
-        ENV_URL = "pipeline.google.com" //pipeline based var, also called global var, all tasks can access it
-        SSH_CRED = credentials('SSH_CRED')
-    }
-    parameters {
-        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
-        
-      }
+ pipeline {  // pipeline is also a keyword, it means its a declarative approach
+        agent any // is a directive or keyword
+        environment{
+            ENV_URL = "pipeline.google.com" //pipeline based var, also called global var, all tasks can access it
+            SSH_CRED = credentials('SSH_CRED')
+     }
+      parameters {
+            string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+            text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')        
+       }
       options { 
                 buildDiscarder(logRotator(numToKeepStr: '10'))
                 timeout(time: 59, unit: 'MINUTES')
-     }  //discard older than 10 logs
-     triggers { 
-               pollSCM('*/1 * * * *') // check ievery min if change in code and build
+             }  //discard older than 10 logs
+       triggers { 
+                pollSCM('*/1 * * * *') // check ievery min if change in code and build
+           }
+     tools {
+             maven 'maven-390' // to install maven software with help of tools on jenkins
        }
-tools {
-        maven 'maven-390' // to install maven software with help of tools on jenkins
-    }
     stages{  // is als0 a directive or keyword
             stage('Name of the stage - 1'){
             steps {
@@ -27,8 +26,7 @@ tools {
                 sh 'echo how are you doing Mr?'
                 sh "echo Name of the variable is ${ENV_URL}"
                 sh "env"
-                sh "sleep 50"
-            }
+           }
         }
         stage('Demo on Parallel Stages'){
             parallel {
