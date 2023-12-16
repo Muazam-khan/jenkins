@@ -23,7 +23,7 @@ pipeline {  // pipeline is also a keyword, it means its a declarative approach
                 sh "env"
             }
         }
-        stage('Name of the stage - 2'){
+        stage('Name of the stage- 2'){
             environment {
                 ENV_URL = "stage.google.com" // task or stage level var. nd this will hv higher precedence than global or pipeline var
             }
