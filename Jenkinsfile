@@ -16,6 +16,9 @@ pipeline {  // pipeline is also a keyword, it means its a declarative approach
             timeout(time: 1, unit: 'MINUTES') }  //discard older than 10 logs
      triggers { pollSCM('*/59 * * * *') // check ievery min if change in code and build
 }
+tools {
+        maven 'apache-maven-3.0.1' 
+    }
     stages{  // is als a directive or keyword
             stage('Name of the stage - 1'){
             steps {
