@@ -1,7 +1,10 @@
 // Reference : https://www.jenkins.io/doc/book/pipeline/syntax
  pipeline {  // pipeline is also a keyword, it means its a declarative approach
-        agent any // is a directive or keyword
-        environment{
+       // agent any // is a directive or keyword, agent any means run on any of the available nodes
+        agent {  // we want agent ws to run this task
+            label 'ws'
+        }
+         environment {
             ENV_URL = "pipeline.google.com" //pipeline based var, also called global var, all tasks can access it
             SSH_CRED = credentials('SSH_CRED')
      }
@@ -22,6 +25,7 @@
     stages{  // is als0 a directive or keyword
             stage('Name of the stage - 1'){
             steps {
+                sh "hostname"
                 sh "mvn --version"
                 sh 'echo how are you doing Mr?'
                 sh "echo Name of the variable is ${ENV_URL}"
