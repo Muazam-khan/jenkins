@@ -26,7 +26,7 @@ tools {
                 sh 'echo how are you doing Mr?'
                 sh "echo Name of the variable is ${ENV_URL}"
                 sh "env"
-                sh "sleep 150"
+                sh "sleep 50"
             }
         }
           stage('Name of the stage- 2'){
