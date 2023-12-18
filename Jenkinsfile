@@ -1,9 +1,9 @@
 // Reference : https://www.jenkins.io/doc/book/pipeline/syntax
  pipeline {  // pipeline is also a keyword, it means its a declarative approach
        // agent any // is a directive or keyword, agent any means run on any of the available nodes
-        agent any //{  // we want agent ws to run this task
-            //label 'ws'
-       // }
+        agent {  // we want agent ws to run this task
+            label 'ws'
+        }
          environment {
             ENV_URL = "pipeline.google.com" //pipeline based var, also called global var, all tasks can access it
             SSH_CRED = credentials('SSH_CRED')
