@@ -39,4 +39,11 @@ We are going to write pipelines using both declarative and scripted pipelines.
      Pipelines are always supposed to be enclosed in a file that ends with Jenkinsfile [ J as in caps ]
 ....      
 
+### How to use groovy based commands or options in a Jenkins declarative file ?
+
+....
+     script {
+          write your groovy commands
+     }
+
 
