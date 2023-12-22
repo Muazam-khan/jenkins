@@ -8,7 +8,7 @@ node {
     }
     }
     else {
-        stage('Runs on Tag Name'){
+        stage('Runs on Branch Name'){
         print 'Runs on branch'
 
     }
