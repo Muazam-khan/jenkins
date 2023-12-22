@@ -1,3 +1,4 @@
+// Demo on scripted pipeline
 node {
     stage('Test'){
         print 'Hello World'
